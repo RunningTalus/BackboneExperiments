@@ -25,8 +25,18 @@
     <p>Written by Addy Osmani</p>
     <p>Part of TodoMVC</p>
   </div>
-  <script type="text/template" id="item-template"></script>
-  <script type="text/template" id="stats-template"></script>
+  <!--underscore microtemplating below-->
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
+      <label><%- title %></label>
+      <button class="destroy"></button>
+    </div>
+    <input class="edit" value="<%- title %>">
+  </script>
+  <script type="text/template" id="stats-template">
+
+  </script>
   <script src="js/lib/jquery-1.11.3.min.js"></script>
   <script src="js/lib/underscore-1.8.3.min.js"></script>
   <script src="js/lib/backbone-1.2.3.min.js"></script>
