@@ -11,7 +11,7 @@ var TodoList = Backbone.Collection.extend({
 
     // Reference to this collection's model
 
-    model: app.Todo,
+    model: app.Todo, // the model type used by collection.create() to instantiate a new model in the collection.
 
     // Save all of the todo items under the '"todos-backbone"' namespace.
     // NOTE that you will need to have the Backbone localStorage plug-in loaded inside your page in order for this to work.
