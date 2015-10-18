@@ -17,7 +17,7 @@ app.TodoView = Backbone.View.extend({
     template: _.template( $('#item-template').html() ),
 
     // The DOM events specific to an item.
-    // This is the events hash, with QTY#3 callbacks: edit(), updateOnEnter(), and close()
+    // This is the events hash
     events: {
         'click .toggle': 'togglecompleted',
         'dblclick label': 'edit',
@@ -67,8 +67,10 @@ app.TodoView = Backbone.View.extend({
     },
 
     // Toggle the '"completed"' state of the model.
+    // Calls toggle() on the Todo model.
+    // toggle() toggles the completed status of the todo and calls save() on the model.
 
-    toggleCompleted: function() {
+    togglecompleted: function() {
         this.model.toggle();
     },
 
