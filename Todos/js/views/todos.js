@@ -19,7 +19,9 @@ app.TodoView = Backbone.View.extend({
     // The DOM events specific to an item.
     // This is the events hash, with QTY#3 callbacks: edit(), updateOnEnter(), and close()
     events: {
+        'click .toggle': 'togglecompleted',
         'dblclick label': 'edit',
+        'click .destroy': 'clear',
         'keypress .edit': 'updateOnEnter',
         'blur .edit': 'close'
     },
@@ -32,6 +34,8 @@ app.TodoView = Backbone.View.extend({
 
     initialize: function() {
         this.listenTo(this.model, 'change', this.render);
+        this.listenTo(this.model, 'destroy', this.remove);
+        this.listenTo(this.model, 'visible', this.toggleVisible);
     },
 
     // Re-renders the titles of the todo item.
@@ -39,8 +43,33 @@ app.TodoView = Backbone.View.extend({
 
     render: function() {
         this.$el.html( this.template( this.model.toJSON() ) );
+
+        this.$el.toggleClass( 'completed', this.model.get('completed') );
+        this.toggleVisible();
+
         this.$input = this.$('.edit');                          // caches the input element within the instantiated template into this.input
         return this;
+    },
+
+    // Toggles the visibility of an item.
+
+    toggleVisible: function() {
+        this.$el.toggleClass( 'hidden', this.isHidden());
+    },
+
+    // Determines if an item should be hidden.
+
+    isHidden: function() {
+        var isCompleted = this.model.get('completed');
+        return ( // hidden cases only
+            (!isCompleted && app.TodoFilter === 'completed') || (isCompleted && app.TodoFilter === 'active')
+        );
+    },
+
+    // Toggle the '"completed"' state of the model.
+
+    toggleCompleted: function() {
+        this.model.toggle();
     },
 
     // Switch this view into '"editing"' mode, displaying the input field.
@@ -75,6 +104,12 @@ app.TodoView = Backbone.View.extend({
         if ( e.which === ENTER_KEY ) {
             this.close();
         }
+    },
+
+    // Remove the item, destroy the model from localStorage and delete its view.
+
+    clear: function() {
+        this.model.destroy();
     }
 
 });
