@@ -1,6 +1,6 @@
 // js/collections/todos.js
 
-var app = app || [];
+var app = app || {};
 
 // Todo Collection
 // ---------------

@@ -1,6 +1,6 @@
 // js/models/todo.js
 
-var app = app || [];
+var app = app || {};
 
 // Todo model
 // ----------
