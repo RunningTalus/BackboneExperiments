@@ -1,0 +1,28 @@
+{
+  "name": "Backbone Todos",
+  "homepage": "https://github.com/RunningTalus/BackboneExperiments",
+  "authors": [
+    "RunningTalus <dave@davemay.org>"
+  ],
+  "description": "A Backbone.js tutorial.",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "Backbone"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone.localStorage": "Backbone.localStorage#~1.1.16",
+    "jquery": "1.11.3",
+    "backbone": "1.2.3",
+    "underscore": "1.8.3"
+  }
+}
