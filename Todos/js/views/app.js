@@ -39,7 +39,7 @@ app.AppView = Backbone.View.extend({
     // We've used the special all event to bind any event triggered on the the Todos collection to view's render method.
 
     initialize: function() {                            // method implicitly called on instantiation
-        this.allCheckbox = this.$('#toggle-all')[0];
+        this.allCheckbox = this.$('#toggle-all');
         this.$input = this.$('#new-todo');
         this.$footer = this.$('footer');
         this.$main = this.$('#main');

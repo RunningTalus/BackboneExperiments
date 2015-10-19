@@ -47,7 +47,7 @@ app.TodoView = Backbone.View.extend({
         this.$el.toggleClass( 'completed', this.model.get('completed') );
         this.toggleVisible();
 
-        this.$input = this.$('.edit');                          // caches the input element within the instantiated template into this.input
+        this.$input = this.$('.edit');         // caches the input element within the instantiated template into this.input
         return this;
     },
 
