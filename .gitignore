@@ -69,3 +69,5 @@ dist
 .tmp
 .sass-cache
 Todos/bower_components
+Books/bower_components
+

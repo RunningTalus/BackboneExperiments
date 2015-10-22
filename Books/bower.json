@@ -1,0 +1,24 @@
+{
+  "name": "BookLibrary",
+  "homepage": "https://github.com/RunningTalus/BackboneExperiments",
+  "authors": [
+    "RunningTalus <dave@davemay.org>"
+  ],
+  "description": "A RESTful Backbone.js App",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "Backbone",
+    "RESTful",
+    "SPA"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
