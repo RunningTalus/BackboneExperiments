@@ -55,7 +55,7 @@ app.get( '/api/books', function( request, response ) {
     });
 });
 
-// Restart the server and enter this into DevTools console.
+// Restart the server and enter this into DevTools console to test GET request.
 //jQuery.get( '/api/books/', function( data, textStatus, jqXHR ) {
 //    console.log( 'Get response:' );
 //    console.dir( data );
@@ -63,7 +63,45 @@ app.get( '/api/books', function( request, response ) {
 //    console.dir( jqXHR );
 //});
 
-// RETURNS: an empty array
+// RETURNS: an empty array, because we have not added and items to MongoDB.
+
+
+// Insert a new book.
+app.post( '/api/books', function( request, response ) {
+    var book = new BookModel({
+        title: request.body.title,
+        author: request.body.author,
+        releaseDate: request.body.releaseDate
+    });
+
+    return book.save( function( err ) {
+        if( !err ) {
+            console.log( 'created' );
+            return response.send( book );
+        } else {
+            console.log( err );
+        }
+    });
+});
+// Restart the server and enter this into DevTools console to test POST request.
+//jQuery.post( '/api/books', {
+//    'title': 'JavaScript the good parts',
+//    'author': 'Douglas Crockford',
+//    'releaseDate': new Date( 2008, 4, 1 ).getTime()
+//}, function(data, textStatus, jqXHR) {
+//    console.log( 'Post response:' );
+//    console.dir( data );
+//    console.log( textStatus );
+//    console.dir( jqXHR );
+//});
+
+// Then enter this.
+//jQuery.get( '/api/books/', function( data, textStatus, jqXHR ) {
+//    console.log( 'Get response:' );
+//    console.dir( data );
+//    console.log( textStatus );
+//    console.dir( jqXHR );
+//});
 
 
 // Connect to MongoDB database
