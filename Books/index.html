@@ -18,7 +18,29 @@
           <button id="add">Add</button>
         </div>
       </form>
+      <div class="bookContainer">
+        <img src="img/placeholder.jpg" />
+        <ul>
+          <li>Developing Backbone.js Applications</li>
+          <li>Addy Osmani</li>
+          <li>2013</li>
+          <li>Backbone, JavaScript, SPA</li>
+        </ul>
+        <button class="delete">Delete</button>
+      </div>
     </div>
+    <!--Underscore Templating-->
+    <script id="bookTemplate" type="text/template">
+      <img src=" <%= coverImage %>" />
+      <ul>
+        <li><%= title %></li>
+        <li><%= author %></li>
+        <li><%= releaseDate %></li>
+        <li><%= keywords %></li>
+      </ul>
+      <button class="delete">Delete</button>
+    </script>
+    <!--Loading Dependency Scripts-->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/backbone/backbone-min.js"></script>
