@@ -1,4 +1,5 @@
 // Backbone/Books/js/collections/library.js
+// Library Collection
 
 var app = app || {};
 
