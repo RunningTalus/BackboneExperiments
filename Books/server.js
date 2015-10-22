@@ -6,8 +6,10 @@ var application_root = __dirname,
     path = require( 'path'),             // Utilities for dealing with file paths
     mongoose = require ('mongoose');     // MongoDB integration
 
+
 // Create the server
 var app = express();
+
 
 // Configure the server
 app.configure( function() {
@@ -29,14 +31,58 @@ app.configure( function() {
 
 });
 
+
 // Start the server.
 var port = 4711;
 app.listen( port, function() {
     console.log( 'Express server listening on port %d in the %s mode', port, app.settings.env );
 });
 
+
 // Routes
 app.get( '/api', function( request, response ) {
     response.send( 'The Library API is running' );
 });
+
+// Get a list of all books
+app.get( '/api/books', function( request, response ) {
+    return BookModel.find( function( err, books ) {
+        if( !err ) {
+            return response.send( books );
+        } else {
+            return console.log( err );
+        }
+    });
+});
+
+// Restart the server and enter this into DevTools console.
+//jQuery.get( '/api/books/', function( data, textStatus, jqXHR ) {
+//    console.log( 'Get response:' );
+//    console.dir( data );
+//    console.log( textStatus );
+//    console.dir( jqXHR );
+//});
+
+// RETURNS: an empty array
+
+
+// Connect to MongoDB database
+mongoose.connect( 'mongodb://localhost/library_database' );
+
+
+// Schemas
+var Book = new mongoose.Schema({
+    title: String,
+    author: String,
+    releaseDate: Date
+});
+
+
+// Models
+var BookModel = mongoose.model( 'Book', Book);
+
+
+
+
+
 
