@@ -11,6 +11,20 @@ var application_root = __dirname,
 var app = express();
 
 
+// Connect to MongoDB database
+mongoose.connect( 'mongodb://localhost/library_database' );
+
+// Schemas
+var Book = new mongoose.Schema({
+    title: String,
+    author: String,
+    releaseDate: Date
+});
+
+// Models
+var BookModel = mongoose.model( 'Book', Book);
+
+
 // Configure the server
 app.configure( function() {
 
@@ -104,23 +118,21 @@ app.post( '/api/books', function( request, response ) {
 //});
 
 
-// Connect to MongoDB database
-mongoose.connect( 'mongodb://localhost/library_database' );
+// Get a single book by id
 
-
-// Schemas
-var Book = new mongoose.Schema({
-    title: String,
-    author: String,
-    releaseDate: Date
+app.get( '/api/books/:id' , function( request, response ) {
+    return BookModel.findById( request.params.id, function( err, book ) {
+        if (!err) {
+            return response.send( book );
+        } else {
+            return console.log( err );
+        }
+    });
 });
-
-
-// Models
-var BookModel = mongoose.model( 'Book', Book);
-
-
-
-
-
-
+// Test with...  NOTE: Check response text for id.
+//jQuery.get( '/api/books/562963d5e016d57625000003', function( data, textStatus, jqXHR ) {
+//    console.log( 'Get response:' );
+//    console.dir( data );
+//    console.log( textStatus );
+//    console.dir( jqXHR );
+//});
