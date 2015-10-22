@@ -68,6 +68,9 @@ node_modules
 dist
 .tmp
 .sass-cache
+
+#
+bower_components
 Todos/bower_components
 Books/bower_components
 
