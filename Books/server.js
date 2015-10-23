@@ -80,7 +80,7 @@ app.get( '/api/books', function( request, response ) {
 // RETURNS: an empty array, because we have not added and items to MongoDB.
 
 
-// Insert a new book.
+// POST - Insert a new book.
 app.post( '/api/books', function( request, response ) {
     var book = new BookModel({
         title: request.body.title,
@@ -118,7 +118,7 @@ app.post( '/api/books', function( request, response ) {
 //});
 
 
-// Get a single book by id
+// GET - Fetch a single book by id
 
 app.get( '/api/books/:id' , function( request, response ) {
     return BookModel.findById( request.params.id, function( err, book ) {
@@ -135,4 +135,41 @@ app.get( '/api/books/:id' , function( request, response ) {
 //    console.dir( data );
 //    console.log( textStatus );
 //    console.dir( jqXHR );
+//});
+
+
+// PUT - Update a book - find a book by id, update its properties, save it, and send it back to the client.
+app.put( '/api/books/:id', function(request, response) {
+    console.log( 'Updating book ' + request.body.title );
+    return BookModel.findById( request.params.id, function( err, book) {
+        book.title = request.body.title;
+        book.author = request.body.author;
+        book.releaseDate = request.body.releaseDate;
+
+        return book.save( function( err ) {
+            if( err ) {
+                console.log( 'book updated' );
+            } else {
+                console.log( err );
+            }
+            return response.send( book );
+
+        });
+    });
+});
+// TEST WITH
+//jQuery.ajax({
+//    url: '/api/books/562963d5e016d57625000003',
+//    type: 'PUT',
+//    data: {
+//        'title': 'JavaScript The good parts',
+//        'author': 'The Legendary Douglas Crockford',
+//        'releaseDate': new Date( 2008, 4, 1 ).getTime()
+//    },
+//    success: function( data, textStatus, jqXHR ) {
+//        console.log( 'Put response:' );
+//        console.dir( data );
+//        console.log( textStatus );
+//        console.dir( jqXHR );
+//    }
 //});
