@@ -173,3 +173,30 @@ app.put( '/api/books/:id', function(request, response) {
 //        console.dir( jqXHR );
 //    }
 //});
+
+
+// DELETE a book
+app.delete( '/api/books/:id', function( request, response ) {
+    console.log( 'Deleting book with id: ' + request.params.id );
+    return BookModel.findById( request.params.id, function( err, book ) {
+        return book.remove( function( err ) {
+            if( !err ) {
+                console.log( 'Book removed' );
+                return response.send( '' );
+            } else {
+                console.log( err );
+            }
+        });
+    });
+});
+// TEST WITH
+//jQuery.ajax({
+//    url: '/api/books/562963d5e016d57625000003',
+//    type: 'DELETE',
+//    success: function( data, textStatus, jqXHR ) {
+//        console.log( 'Delete response:' );
+//        console.dir( data );
+//        console.log( textStatus );
+//        console.dir( jqXHR );
+//    }
+//});
