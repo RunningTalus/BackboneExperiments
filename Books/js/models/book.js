@@ -1,4 +1,5 @@
 // Books/js/models/book.js
+// BookModel
 
 var app = app || {};
 
@@ -9,6 +10,13 @@ app.Book = Backbone.Model.extend({
         author: 'Unknown',
         releaseDate: 'Unknown',
         keywords: 'None'
-    }
+    },
+
+    idAttribute: '_id'
+
+/*    parse: function( response ) {
+        response.id = response._id;
+        return response;
+    }*/
 
 });

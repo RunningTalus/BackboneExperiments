@@ -94,14 +94,14 @@ app.post( '/api/books', function( request, response ) {
         keywords: request.body.keywords
     });
 
-    return book.save( function( err ) {
+    book.save( function( err ) {
         if( !err ) {
-            console.log( 'created' );
-            return response.send( book );
+            return console.log( 'created' );
         } else {
-            console.log( err );
+            return console.log( err );
         }
     });
+    return response.send( book );
 });
 // Restart the server and enter this into DevTools console to test POST request.
 //jQuery.post( '/api/books', {

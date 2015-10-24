@@ -5,7 +5,7 @@ var app = app || {};
 
 app.Library = Backbone.Collection.extend({
     model: app.Book,
-    url: 'api/books'
+    url: '/api/books'
 });
 
 // The default implementation of Backbone.sync assumes that the API looks like this.

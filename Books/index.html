@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Backbone.js RESTful Book Library</title>
     <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="js/lib/jquery-ui-1.10.4.custom/css/ui-lightness/jquery-ui-1.10.4.custom.min.css">
   </head>
   <body>
     <div id="books">
@@ -31,17 +32,19 @@
     </div>
     <!--Underscore Templating-->
     <script id="bookTemplate" type="text/template">
-      <img src=" <%= coverImage %>" />
+      <img src= "<% coverImage %>" />
       <ul>
         <li><%= title %></li>
         <li><%= author %></li>
-        <li><%= releaseDate %></li>
-        <li><%= keywords %></li>
+        <li><%= $.format.date( new Date( releaseDate ), 'MMMM yyyy' ) %></li>
+        <li><% _.each( keywords, function( keyobj ) {%> <%= keyobj.keyword %><% } ); %></li>
       </ul>
       <button class="delete">Delete</button>
     </script>
     <!--Loading Dependency Scripts-->
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/lib/jquery-ui-1.10.4.custom/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="bower_components/jquery-dateFormat/dist/jquery-dateFormat.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/backbone/backbone-min.js"></script>
     <script src="js/models/book.js"></script>
