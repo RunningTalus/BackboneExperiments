@@ -40,4 +40,6 @@ define([
 
     });
 
+    return new TodosCollection();
+
 });
