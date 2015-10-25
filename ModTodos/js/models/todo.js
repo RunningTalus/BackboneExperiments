@@ -10,7 +10,11 @@ define(['underscore', 'backbone'], function(_, Backbone) {
             done: false
         },
 
+        // Ensure that each todo created has `content`.
         initialize: function() {
+            if (!this.get('content')) {
+                this.set({'content': this.defaults.content});
+            }
         },
 
         // Toggle the 'done' state of this **todo** item.
@@ -21,7 +25,6 @@ define(['underscore', 'backbone'], function(_, Backbone) {
         // Remove this **Todo** from **localStorage** and delete its view.
         clear: function() {
             this.destroy();
-            this.view.remove();
         }
     });
 

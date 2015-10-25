@@ -19,7 +19,7 @@ define([
             "dblclick div.todo-content" : "edit",
             "click span.todo-destroy"   : "clear",
             "keypress .todo-input"      : "updateOnEnter",
-            'blur input': 'close'
+            'blur input'                : 'close'
         },
 
         // The TodoView listens for changes to its model, re-rendering. Since there's

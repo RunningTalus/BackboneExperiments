@@ -3,12 +3,12 @@
 // Require.js allows us to configure mappings to paths as demonstrated below:
 require.config({
     paths: {
-        jquery: '../bower_components/jquery/dist/jquery.min.js',
-        underscore: '../bower_components/underscore/underscore-min.js',
-        backbone: '../bower_components/backbone/backbone-min.js',
+        jquery: 'libs/jquery/jquery.min',
+        underscore: 'libs/underscore/underscore-min',
+        backbone: 'libs/backbone/backbone-min',
 
         // storage has built in support for requirejs-hence, it doesn't need to configured in 'shim'
-        storage: '../bower_components/backbone.localStorage/backbone.localStorage-min.js',
+        storage: 'libs/backbone/backbone.localStorage.js',
         text: 'libs/require/text'
     },
 
