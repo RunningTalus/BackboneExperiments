@@ -6,6 +6,7 @@ require.config({
         jquery: 'bower_components/jquery/dist/jquery.min.js',
         underscore: 'bower_components/underscore/underscore-min.js',
         backbone: 'bower_components/backbone/backbone-min.js',
+        localstorage: 'bower_components/backbone.localStorage/backbone.localStorage-min.js'
         text: 'require/text.js'
     }
 });
