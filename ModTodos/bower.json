@@ -1,0 +1,32 @@
+{
+  "name": "Modular Todos",
+  "homepage": "https://github.com/RunningTalus/BackboneExperiments",
+  "authors": [
+    "RunningTalus <dave@davemay.org>"
+  ],
+  "description": "Using Require.js to create a Modular Todo App.",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "Backbone",
+    "Todos",
+    "Modular",
+    "Require"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.3",
+    "underscore": "~1.8.3",
+    "jquery": "~2.1.4",
+    "backbone.localStorage": "~1.1.16",
+    "require": "*"
+  }
+}
